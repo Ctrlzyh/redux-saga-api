@@ -10,7 +10,9 @@
 
 import { call, put, select, take, takeEvery, takeLatest, throttle, fork, all, race, delay } from 'redux-saga/effects'
 import axios from 'axios'
+import { LOGIN_SUCEESS, LOGIN_FAILED } from './defReducer'
 
+// ES6 的 generator 函数
 export function* defSaga () {
     //辅助函数，监听action,触发saga函数调用
     yield takeEvery('takeEvery', function* () {
@@ -51,11 +53,15 @@ export function* defSaga () {
     //向store发起一个action
     yield takeEvery('takeEveryPut', function* () {
         yield console.log('takeEveryPut----->')
-        const res = yield call(axios.get, 'https://reactnative.dev/movies.json')
-        yield put({
-            type: 'LOGIN_SUCEESS',
-            ...res.data
-        })
+        try {
+            const res = yield call(axios.get, 'https://reactnative.dev/movies.json')
+            yield put({
+                type: LOGIN_SUCEESS,
+                ...res.data
+            })
+        } catch (err) {
+            yield put({ type: LOGIN_FAILED, err })
+        }
     })
 
 
