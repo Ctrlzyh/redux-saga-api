@@ -39,7 +39,7 @@ export function* defSaga () {
     yield takeEvery('takeEveryCall', function* () {
         yield console.log('takeEveryCall----->')
         const res = yield call(axios.get, 'https://reactnative.dev/movies.json')
-        yield console.log('res----->', res)
+        yield console.log('res----->', res.data)
     })
 
     //阻塞方法，用来匹配发出的action

@@ -1,5 +1,8 @@
 import './App.css';
-import { useDispatch, useSelector } from 'react-redux'
+import {
+  useDispatch,
+  // useSelector 
+} from 'react-redux'
 import axios from 'axios'
 import { LOGIN_SUCEESS, LOGIN_FAILED } from './store/defReducer'
 function App () {
@@ -9,7 +12,10 @@ function App () {
     //异步的请求和复杂的逻辑放在组件里进行实现时，这个组件会显得过于臃肿
     //将这些异步请求或者是复杂的逻辑放到 action 去处理
     axios.get('https://reactnative.dev/movies.json')
-      .then((data) => { console.log('----handAction-->', data) })
+      .then((res) => {
+        console.log('----handAction-->', res)
+        return res.data
+      })
       .then(
         data => dispatch({ type: LOGIN_SUCEESS, ...data }),
         err => dispatch({ type: LOGIN_FAILED, err })
