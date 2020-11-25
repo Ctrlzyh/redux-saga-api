@@ -53,7 +53,7 @@ export function* defSaga () {
         yield console.log('takeEveryPut----->')
         const res = yield call(axios.get, 'https://reactnative.dev/movies.json')
         yield put({
-            type: 'login_success',
+            type: 'LOGIN_SUCEESS',
             ...res.data
         })
     })

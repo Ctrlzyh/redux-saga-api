@@ -1,8 +1,9 @@
 import './App.css';
-import { connect, useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 
 function App () {
   const dispatch = useDispatch();
+
   function handleTakeEvery () {
     dispatch({
       type: 'takeEvery',
@@ -18,29 +19,29 @@ function App () {
       type: 'throttle'
     })
   }
-  function handleTakeEverySelect() {
+  function handleTakeEverySelect () {
     dispatch({
       type: 'takeEverySelect',
-      user:({
-        username:'湛益红',
-        password:'123123'
+      user: ({
+        username: '湛益红',
+        password: '123123'
       })
     })
   }
 
-  function handleTakeEveryCall() {
+  function handleTakeEveryCall () {
     dispatch({
       type: 'takeEveryCall',
     })
   }
 
-  function handleTakeEveryTake() {
+  function handleTakeEveryTake () {
     dispatch({
       type: 'takeEveryTake',
     })
   }
 
-  function handleTakeEveryPut() {
+  function handleTakeEveryPut () {
     dispatch({
       type: 'takeEveryPut',
     })
@@ -60,4 +61,4 @@ function App () {
   );
 }
 
-export default connect()(App);
+export default App;
