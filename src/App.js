@@ -1,12 +1,13 @@
 import './App.css';
 import {
   useDispatch,
-  // useSelector 
+  useSelector 
 } from 'react-redux'
 import axios from 'axios'
 import { LOGIN_SUCEESS, LOGIN_FAILED } from './store/defReducer'
 function App () {
   const dispatch = useDispatch();
+  const userState = useSelector(state => state.type)
 
   function handAction () {
     //异步的请求和复杂的逻辑放在组件里进行实现时，这个组件会显得过于臃肿
@@ -75,6 +76,7 @@ function App () {
         <button onClick={handleTakeEveryCall}>点击API-call</button>
         <button onClick={handleTakeEveryTake}>点击API-take</button>
         <button onClick={handleTakeEveryPut}>点击API-put</button>
+        <div>{userState}</div>
       </header>
     </div>
   );
